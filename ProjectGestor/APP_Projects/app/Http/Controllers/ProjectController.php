@@ -89,14 +89,14 @@ class ProjectController extends Controller
         $project->overall_sustainability_score = $request->overall_sustainability_score;
         $project->save();
 
-        return redirect('projects/'.$project->id);
+        return redirect('projects/'.$project->id, 301);
     }
 
     public function destroy(string $id)
     {
-        if (Auth::user()->accountType == 'General User' or Auth::user()->accountType == 'Analyst'){
-            abort(403);
-        }
+        // if (Auth::user()->accountType == 'General User' or Auth::user()->accountType == 'Analyst'){
+        //     abort(403);
+        // }
         $project = Project::find($id);
         $project->delete();
         return redirect('/projects');

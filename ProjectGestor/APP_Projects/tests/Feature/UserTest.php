@@ -12,10 +12,10 @@ class UserTest extends TestCase
 
     public function test_user_creation(): void
     {
-        $this->seed();
+        // $this->seed();
         $request = [
-            'name' => 'John tres',
-            'email' => 'john@hhghg.com',
+            'name' => 'John',
+            'email' => 'john@test.com',
             'password' => 'secret123', // usually hashed inside controller
             'phone' => '45454545454545',
             'accountType' => 'Administrator',
