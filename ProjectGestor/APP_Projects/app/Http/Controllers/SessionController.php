@@ -35,8 +35,7 @@ class SessionController extends Controller
             'password' => ['required']
         ]);
         Auth::attempt($atributes);
-        #return redirect('/projects');
-        return (200);
+        return redirect('/projects');
     }
 
     /**

@@ -35,7 +35,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-       
+        
         $project = new Project();
         $project->project_name = $request->project_name;
         $project->description = $request->description;
@@ -44,7 +44,8 @@ class ProjectController extends Controller
         $project->end_date = $request->end_date;
         $project->overall_sustainability_score = $request->overall_sustainability_score;
         $project->save();
-      
+
+        return response('Success', 200);
 
     }
 

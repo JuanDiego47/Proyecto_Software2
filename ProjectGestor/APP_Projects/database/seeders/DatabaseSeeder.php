@@ -8,11 +8,21 @@ use App\Models\SustainabilityCategory;
 use App\Models\SustainabilityMetric;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        #Administrator user creation
+        User::create([
+            'name' => 'trone',
+            'email' => 'trone@gmail.com',
+            'password' => Hash::make('amateur7'), // Always hash passwords!
+            'phone' => '45454545454545',
+            'accountType' => 'Administrator',
+        ]);
         $faker = Faker::create(); // Initialize Faker here (once)
 
         // 1. Seed Sustainability Categories

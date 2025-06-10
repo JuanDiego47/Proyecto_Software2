@@ -12,7 +12,7 @@ class UserTest extends TestCase
 
     public function test_user_creation(): void
     {
-
+        $this->seed();
         $request = [
             'name' => 'John tres',
             'email' => 'john@hhghg.com',
@@ -21,7 +21,7 @@ class UserTest extends TestCase
             'accountType' => 'Administrator',
         ];
         $response = $this->post('/users/register', $request);
-        $response->assertStatus(200); // or 302 if redirecting
+        $response->assertRedirect('/projects');
 
     }
     public function test_user_login(): void
@@ -34,7 +34,13 @@ class UserTest extends TestCase
            
         ];
         $response = $this->post('/users/login', $request);
-        $response->assertStatus(200); // or 200 to test correct 
+        $response->assertRedirect('/projects');
+
+    }
+    public function test_user_logout(): void
+    {
+        $response = $this->get('/users/logout');
+        $response->assertRedirect('/');
 
     }
 }
