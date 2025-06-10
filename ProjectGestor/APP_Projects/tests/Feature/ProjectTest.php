@@ -44,6 +44,20 @@ class ProjectTest extends TestCase
         $response->assertStatus(301);
 
     }
+    public function test_project_index(): void
+    {   
+        $response = $this->get('/projects');
+        $response->assertStatus(200);
+
+    }
+    public function test_project_show(): void
+    {
+        $this->seed();
+        $id = '19';
+        $response = $this->get('/projects/'.$id);
+        $response->assertStatus(200);
+
+    }
     public function test_project_elimination(): void
     {
         $this->seed();

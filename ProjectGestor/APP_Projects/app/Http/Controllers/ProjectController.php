@@ -16,7 +16,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::paginate(6);
-        return view('projects/index', ['projects' => $projects]);
+        return response()->view('projects/index', ['projects' => $projects], 200);
     }
 
     /**
@@ -55,7 +55,7 @@ class ProjectController extends Controller
     public function show(string $id)
     {
         $project = Project::find($id);
-        return view('projects/show', ['project' => $project]);
+        return response()->view('projects/show', ['project' => $project], 200);
     }
 
     /**
@@ -106,7 +106,7 @@ class ProjectController extends Controller
         if (Auth::user()->accountType == 'General User'){
             abort(403);
         }
-        dd('prediction');
+        // dd('prediction');
         $project = Project::find($id);
         return view('projects/show', ['project' => $project]);
     }
