@@ -28,5 +28,18 @@ services:
     depends_on:
       - mysql
 
+  gateway:
+    build:
+      context: ./Gateway
+      dockerfile: Dockerfile
+    container_name: gateway
+    ports:
+      - "8081:80"
+    volumes:
+      - ./Gateway:/var/www/html
+      - ./Gateway/docker/apache/vhost.conf:/etc/apache2/sites-available/000-default.conf
+    depends_on:
+      - mysql
+
 volumes:
   mysql_data:
