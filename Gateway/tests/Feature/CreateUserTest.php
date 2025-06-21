@@ -22,11 +22,12 @@ class CreateUserTest extends TestCase
         ];
 
         // Simulate POST request to registration route
-        $response = $this->post('/register', $userData);
+        $response = $this->postJson('/api/register', $userData);
+
 
         // Assert the user was redirected (or whatever your app does on success)
-        $response->assertStatus(302);
-        $response->assertRedirect('/home'); // Adjust if different
+        $response->assertStatus(201);
+        
 
         // Assert user exists in the database
         $this->assertDatabaseHas('users', [
