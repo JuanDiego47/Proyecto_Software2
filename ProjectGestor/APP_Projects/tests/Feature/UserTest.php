@@ -12,7 +12,10 @@ class UserTest extends TestCase
 
     public function test_user_creation(): void
     {
-        // $this->seed();
+        $this->withoutMiddleware(
+            \App\Http\Middleware\VerifyCsrfToken::class
+        );
+        $this->seed();
         $request = [
             'name' => 'John',
             'email' => 'john@test.com',
@@ -26,6 +29,9 @@ class UserTest extends TestCase
     }
     public function test_user_login(): void
     {
+        $this->withoutMiddleware(
+            \App\Http\Middleware\VerifyCsrfToken::class
+        );
 
         $request = [
     

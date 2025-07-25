@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Run Laravel Tests in App Container') {
+            steps {
+                script {
+                    sh '''
+                    echo "Running tests inside Laravel container..."
+                    docker exec laravel sh -c "cd /var/www/ProjectGestor/APP_Projects && php artisan test"
+                    '''
+                }
+            }
+        }
+    }
+}

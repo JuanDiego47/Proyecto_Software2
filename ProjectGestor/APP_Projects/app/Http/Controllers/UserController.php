@@ -22,9 +22,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->accountType == 'General User' or Auth::user()->accountType == 'Analyst'){
-            abort(403);
-        }
+        // if (Auth::user()->accountType == 'General User' or Auth::user()->accountType == 'Analyst'){
+        //     abort(403);
+        // }
        return view('users/register');
     }
 

@@ -14,6 +14,9 @@ class ProjectTest extends TestCase
 
     public function test_project_creation(): void
     {
+        $this->withoutMiddleware(
+            \App\Http\Middleware\VerifyCsrfToken::class
+        );
         $request = [
             'project_name' => 'test_project',
             'description' => 'test_description',
@@ -22,13 +25,16 @@ class ProjectTest extends TestCase
             'end_date' => '2004-4-4',
             'overall_sustainability_score' => '3.4',
         ];
-        // dd($request);
+        //dd($request);
         $response = $this->post('/projects', $request);
         $response->assertStatus(200);
 
     }
     public function test_project_update(): void
     {   
+        $this->withoutMiddleware(
+            \App\Http\Middleware\VerifyCsrfToken::class
+        );
         $this->seed();
         $request = [
             'id' => '11',
